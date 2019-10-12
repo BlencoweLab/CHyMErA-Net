@@ -1,9 +1,7 @@
 import numpy as np
 import pandas as pd
 import re
-import sys
 import logging
-from sklearn.preprocessing import OneHotEncoder
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +29,9 @@ def onehot_to_char(one_hot_seq, alphabet = _ALPHABET):
     int_to_char = dict((i, c) for i, c in enumerate(alphabet))
     charseq = []
     for i in range(one_hot_seq.shape[0]):
+        if sum(one_hot_seq[i]) != 1:
+            raise ValueError("Element %d:%s has too many values" %
+                                (i, one_hot_seq[i]))
         letter = int_to_char[np.where(one_hot_seq[i] == 1)[0][0]]
         charseq.append(letter)
     return ''.join(charseq)
