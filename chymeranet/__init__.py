@@ -23,6 +23,7 @@ logger = logging.getLogger(__name__)
 _SCALER = resource_filename(__name__, "data/aux_scaler.human_mouse.full.pkl")
 _MODEL = resource_filename(__name__, "data/CNN.human_mouse.full.h5")
 
+
 def getoptions(args=None):
     desc = "Deep learning framework for predicting efficient Cas12a guides"
     parser = argparse.ArgumentParser(description=desc)
@@ -70,11 +71,13 @@ def batch_iterator(iterator, batch_size):
         if batch:
             yield batch
 
+
 def parse_sequences(fasta_file):
     """Load FASTA sequence and return SeqRecord iterator
     """
     fin = fileinput.input(fasta_file, openhook=fileinput.hook_compressed)
     return SeqIO.parse(fin, 'fasta')
+
 
 def preprocess(seqobj):
     """ Perform pre-processing steps of a given guide sequence
@@ -140,11 +143,10 @@ def main(args=None):
     if not args.aux:
         candidates = candidates.drop(candidates.columns[1:], axis=1)
     candidates["CNN"] = classifier.predict([cnn_X, aux_std],
-                                        batch_size=args.batch_size)
+                                           batch_size=args.batch_size)
 
     # Output
-    logger.info("Writing output")    
+    logger.info("Writing output")
     candidates.to_csv(sys.stdout, sep="\t", index=False)
 
     logger.info("Done!")
-

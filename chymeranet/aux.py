@@ -28,7 +28,8 @@ def melting_temperature(seq, mt_table=mt.DNA_NN2):
     # Promiscuous 19-23
     Tm.append(mt.Tm_NN(seq[18:], nn_table=mt_table))
 
-    return pd.Series(Tm, index=['Tm_NN.1_23', 'Tm_NN.1_6', 'Tm_NN.7_18', 'Tm_NN.19_23'])
+    return pd.Series(Tm, index=['Tm_NN.1_23', 'Tm_NN.1_6', 'Tm_NN.7_18',
+                                'Tm_NN.19_23'])
 
 
 def rnafold(seq):

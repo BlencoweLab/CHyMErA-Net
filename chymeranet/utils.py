@@ -24,8 +24,7 @@ def encode_data(X, scaler):
     return cnn_X, aux_std
 
 
-
-def onehot_to_char(one_hot_seq, alphabet = _ALPHABET):
+def onehot_to_char(one_hot_seq, alphabet=_ALPHABET):
     int_to_char = dict((i, c) for i, c in enumerate(alphabet))
     charseq = []
     for i in range(one_hot_seq.shape[0]):
@@ -37,7 +36,7 @@ def onehot_to_char(one_hot_seq, alphabet = _ALPHABET):
     return ''.join(charseq)
 
 
-def char_to_onehot(seq, alphabet = _ALPHABET):
+def char_to_onehot(seq, alphabet=_ALPHABET):
     # https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
 
     # define a mapping of chars to integers
@@ -55,4 +54,3 @@ def char_to_onehot(seq, alphabet = _ALPHABET):
 
 def has_N(seq):
     return bool(re.search(r'N', seq))
-           
