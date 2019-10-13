@@ -1,0 +1,21 @@
+name: chymeranet
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - python~=3.5.4
+  - viennarna=2.4.11
+  - pip
+  - pip:
+    - setuptools==39.1.0
+    - numpy==1.14.5
+    - pandas==0.23.4
+    - biopython==1.69
+    - scikit-learn==0.21.1
+    - tensorflow==1.13.1
+    - keras==2.2.4
+    - tqdm
+    - joblib
+    - pytest
+    - pytest-mock
+
