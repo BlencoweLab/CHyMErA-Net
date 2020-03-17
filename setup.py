@@ -8,7 +8,7 @@ exec(open(os.path.join(here, 'chymeranet/version.py')).read())
 setup(name='chymeranet',
       version=__version__,
       description='Deep learning framework for predicting efficient Cas12a guides',
-      url='',
+      url='https://github.com/BlencoweLab/CHyMErA-Net',
       author='Kevin Ha',
       author_email='k.ha@mail.utoronto.ca',
       license='',

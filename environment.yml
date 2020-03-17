@@ -1,4 +1,4 @@
-name: chymeranet
+name: cas12a
 channels:
   - bioconda
   - defaults
